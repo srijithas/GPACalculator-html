@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>GETTING STARTED WITH BRACKETS</title>
+        <meta name="description" content="An interactive getting started guide for Brackets.">
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        
+        <!--
+            MADE WITH <3 AND JAVASCRIPT
+        -->
+        
+        <h1>UC GPA Calculator</h1>
+        <img src="http://brandchannel.com/wp-content/uploads/2012/12/univ_calif_old_logo_460x460.jpg" alt="Let There Be Light" style
+             ="position:absolute;width:100px;height;100px;top:3px;left:500px">
+        <h2>This is your guide!</h2>
+        
+        <!--
+            MADE WITH <3 AND JAVASCRIPT
+        -->
+        <p> Fill out everything below to get started!
+        </p>
+        <p>
+        <form id="CALC">
+        
+         Current GPA:<br>
+         <input type="number" step= "0.1" id="curGPA"><br>
+          GPA you want:<br>
+          <input type="number" step= "0.1" id="desGPA">
+            <br>Units you have:<br>
+            <input type = "number"  id="curUnits">
+            <br>Units you'll be taking:<br>
+            <input type = "number" id="futUnits"><br>
+            Number of quarters: <br>
+            <input type = "number" id="numQuarters">
+            <br>
+             <button onclick="return calculate()">Submit</button>
+            <p id="reqGPA"></p>
+          </form>
+       <!--  <p type="number" id="reqGPA"></p>-->
+           <!-- <button onclick="calculate()">Submit</button>-->
+        <!-- <label> 
+            GPA needed
+            <input id= "reqGPA" maxlength ="7" readonly="readonly" size= "7" type= "text" value= " ">
+         </label>-->
+        
+    
+
+        
+       <form id="CALCUNIT">
+        
+        Current GPA:<br>
+         <input type="number" step= "0.01" id="cGPA"><br>
+        GPA you want:<br>
+          <input type="number" step= "0.01" id="dGPA">
+        <br>Units you have:<br>
+            <input type = "number" step="0.1"  id="cUnits">
+        <br>GPA average you will have:<br>
+            <input type ="number" step="0.01" id= "fGPA">
+            <br>
+             <button onclick ="return calculateunits()">Go</button>
+           <p id="requnits"></p>
+        </form>
+       
+        
+        <script type="text/javascript">
+        function calculate() {
+            var x = document.getElementById("CALC");
+            var curGPA = x.elements[0].value;
+            var desGPA = x.elements[1].value;
+            var curUnits = x.elements[2].value;
+            var futUnits = x.elements[3].value;
+            var numQuarters = x.elements[4].value;
+            if(curGPA>4.0 || curGPA<0) {
+                var invalid = "Invalid entry. Please make sure your entries are on the 4.0 scale."
+                //document.write(invalid);
+                 document.getElementById("reqGPA").innerHTML=invalid;
+                return false;
+            }
+            else if(desGPA>4.0 || desGPA<0) {
+                var inva = "Invalid entry. Please make sure your entries are on the 4.0 scale."
+                
+                 document.getElementById("reqGPA").innerHTML=inva;
+                return false;
+            }
+            else {
+            var add = (curUnits*1)+(futUnits*numQuarters);
+            var rGPA=((desGPA*(add)) - (curGPA*curUnits))/(futUnits*numQuarters);
+            rGPA= Number(Math.round(rGPA+'e2')+'e-2');
+            if(rGPA>4.0) {
+                var nop = "Sorry, this is not possible."
+               // document.write(nop);
+                 document.getElementById("reqGPA").innerHTML=nop;
+                return false;
+            }
+            else {
+                //window.alert(rGPA);
+       
+              document.getElementById("reqGPA").innerHTML=rGPA *1 ;
+              return false;
+              
+         
+            }
+            }
+           
+        }
+             
+        function calculateunits(){
+            var y = document.getElementById("CALCUNIT");
+            var cGPA = y.elements[0].value;
+            var dGPA = y.elements[1].value;
+            var cUnits = y.elements[2].value;
+            var fGPA = y.elements[3].value;
+            if(cGPA>4.0 || cGPA<0 || dGPA>4.0 || dGPA<0 || fGPA >4.0 || fGPA <0){
+                var invalid = "Invalid entry. Please make sure your entries are on the 4.0 scale."
+               // document.write(invalid);
+                 document.getElementById("requnits").innerHTML=invalid;
+                return false;
+            }else{
+                var diffGPA = (dGPA*1)- (cGPA*1);
+                var diff2GPA = (fGPA*1)-(dGPA*1)
+                var futunits = (diffGPA * cUnits)/diff2GPA;
+                futunits = Math.ceil(futunits);
+                
+                //window.alert(futunits);
+               document.getElementById("requnits").innerHTML=futunits;
+                return false;
+            }
+        }    
+        </script>
+      
+
+        
+        
