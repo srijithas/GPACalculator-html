@@ -8,37 +8,45 @@
         <meta name="description" content="An interactive getting started guide for Brackets.">
         <link rel="stylesheet" href="main.css">
     </head>
-    <body>
-        
+    <body style="background-color:#F0FFFF;">
+       
         <!--
             MADE WITH <3 AND JAVASCRIPT
         -->
         
-        <h1>UC GPA Calculator</h1>
+        <h1><font color=”#2554C7″>UC GPA Calculator</font></h1>
         <img src="http://brandchannel.com/wp-content/uploads/2012/12/univ_calif_old_logo_460x460.jpg" alt="Let There Be Light" style
              ="position:absolute;width:100px;height;100px;top:3px;left:500px">
-        <h2>This is your guide!</h2>
+       
         
         <!--
             MADE WITH <3 AND JAVASCRIPT
         -->
-        <p> Fill out everything below to get started!
-        </p>
-        <p>
+       <br>
+        <p> The GPA Calculator allows you to determine how your current semester's grades will effect your overall GPA, how many credits are required to raise your GPA to a specified level, and what grades you need to earn in order to raise your GPA to a specified level.</p>
+           
+        <a href="http://educhoices.org/articles/20_Easy_Ways_to_Raise_Your_Student_GPA_in_College.html">Tips to Raise GPA</a><br>
+        
+        <a href="https://registrar.ucsc.edu/navigator/section4/gpas/grade-points.html">Grade Points in UC System</a>
+        
+        <h4>CALCULATE to find out the average GPA required to meet your desired GPA:</h4>
+         <marquee width="400"> Fill out everything below to get started!</marquee>
+       
         <form id="CALC">
         
          Current GPA:<br>
          <input type="number" step= "0.1" id="curGPA"><br>
           GPA you want:<br>
           <input type="number" step= "0.1" id="desGPA">
-            <br>Units you have:<br>
+            <br>Current units you have:<br>
             <input type = "number"  id="curUnits">
             <br>Units you'll be taking:<br>
             <input type = "number" id="futUnits"><br>
-            Number of quarters: <br>
+           <!-- Number of quarters: <br>
             <input type = "number" id="numQuarters">
-            <br>
+            <br>-->
              <button onclick="return calculate()">Submit</button>
+            <p>This is the GPA you will need to obtain your desired GPA:</p>
             <p id="reqGPA"></p>
           </form>
        <!--  <p type="number" id="reqGPA"></p>-->
@@ -49,8 +57,10 @@
          </label>-->
         
     
-
         
+        <br>
+        <h4>CALCULATE to find the number of additional units required to meet your desired GPA:</h4>
+         <marquee width="400"> Fill out everything below to get started!</marquee>
        <form id="CALCUNIT">
         
         Current GPA:<br>
@@ -63,6 +73,7 @@
             <input type ="number" step="0.01" id= "fGPA">
             <br>
              <button onclick ="return calculateunits()">Go</button>
+           <p>This is the number of units you will need to obtain your desired GPA:</p>
            <p id="requnits"></p>
         </form>
        
@@ -74,7 +85,7 @@
             var desGPA = x.elements[1].value;
             var curUnits = x.elements[2].value;
             var futUnits = x.elements[3].value;
-            var numQuarters = x.elements[4].value;
+           // var numQuarters = x.elements[4].value;
             if(curGPA>4.0 || curGPA<0) {
                 var invalid = "Invalid entry. Please make sure your entries are on the 4.0 scale."
                 //document.write(invalid);
@@ -88,8 +99,8 @@
                 return false;
             }
             else {
-            var add = (curUnits*1)+(futUnits*numQuarters);
-            var rGPA=((desGPA*(add)) - (curGPA*curUnits))/(futUnits*numQuarters);
+            var add = (curUnits*1)+(futUnits*1);
+            var rGPA=((desGPA*(add)) - (curGPA*curUnits))/(futUnits*1);
             rGPA= Number(Math.round(rGPA+'e2')+'e-2');
             if(rGPA>4.0) {
                 var nop = "Sorry, this is not possible."
@@ -132,7 +143,6 @@
             }
         }    
         </script>
-      
 
         
         
